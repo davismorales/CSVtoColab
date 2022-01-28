@@ -4,11 +4,11 @@ from matplotlib import pyplot as plt
 
 hunting = pd.read_csv('https://raw.githubusercontent.com/davismorales/graceproject/main/hunting.csv')
 agriculture = pd.read_csv('https://raw.githubusercontent.com/davismorales/graceproject/main/agriculture.csv')
-weight = pd.read_csv('https://raw.githubusercontent.com/davismorales/graceproject/main/weight.csv')
+weight = pd.read_csv('https://raw.githubusercontent.com/davismorales/graceproject/main/popdense.csv')
 
 society = weight['society_xd_id'].tolist()
 weightpoints = weight['code'].tolist()
-value = [None]*34
+value = [None]*len(weightpoints)
 
 huntingcheck = hunting['society_xd_id'].tolist()
 agriculturecheck = agriculture['society_xd_id'].tolist()
@@ -32,7 +32,6 @@ for sname in society:
     for aname in agriculturecheck:
       aindex = aindex + 1
       if aname == sname:
-        print(aname)
         value[sindex] = value[sindex] + agriculturevalues[aindex]
         aindex = 0
         break
